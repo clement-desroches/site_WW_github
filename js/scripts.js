@@ -28,6 +28,7 @@
 
     $(".js-scroll-trigger").click(function () {
         $(".navbar-collapse").collapse("hide");
+        $("#mainNav").addClass("navbar-shrink");
     });
     
     $("body").scrollspy({
@@ -38,9 +39,10 @@
 
     var navbarCollapse = function () {
         if ($("#mainNav").offset().top > 100) {
-            $("#mainNav").addClass("navbar-shrink");
-        } else {
             $("#mainNav").removeClass("navbar-shrink");
+            $(".navbar-collapse").collapse("hide");
+        } else {
+            $("#mainNav").addClass("navbar-shrink");
         }
     };
     
