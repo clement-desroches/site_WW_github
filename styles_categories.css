@@ -667,11 +667,11 @@ header.masthead {
 
 /* Content */
 #learnings-container .content {
-
+  background-color: black;
+  padding-bottom: 0.25rem;
   margin:2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  position: relative;
 }
 #learnings-container .content:hover {
   margin: 1rem;
@@ -686,45 +686,23 @@ header.masthead {
 }
 
 #learnings-container .column .img-learning {
-  display: block;
   position:relative ;
   width:100%; 
   height: 15rem; 
   overflow: hidden; 
-  margin-bottom: 0rem;
-  border-radius: 10px;
+  margin-bottom: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 1);
-  overflow: hidden;
-  width: 100%;
-  height: 20%;
-  transition: .5s;
-  border-radius: 10px;
-}
-#learnings-container .content:hover .overlay {
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-#learnings-container .content:hover .learnings-title {
-  margin-top: 3rem;
-}
 #learnings-container .column .learnings-title {
   color: #BE8479;
-  margin-top: 0.5rem;
-  transition: .5s;
-
+  margin-bottom: -1rem;
 }
 
 #learnings-container .column .learnings-subtitle {
   color: rgb(208, 206, 206);
   font-style: italic;
-
 }
 
 /* Style the buttons */
