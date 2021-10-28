@@ -171,6 +171,34 @@ h6, .h6 {
   padding-left: 0;
 }
 
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #be8579; 
+  border-radius: 10px;
+  height: 1px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #be857988; 
+}
+
+
+
+
 /* NAVBAR */
 navbar {
   position: relative;
@@ -658,12 +686,6 @@ header.masthead {
   display: inline-block; /* Hide columns by default */
 }
 
-/* Clear floats after rows */
-#learnings-container .row2:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 /* Content */
 #learnings-container .content {
@@ -672,6 +694,7 @@ header.masthead {
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
+  height: 15rem;
 }
 #learnings-container .content:hover {
   margin: 1rem;
@@ -710,6 +733,7 @@ header.masthead {
 #learnings-container .content:hover .overlay {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
+  overflow: auto;
 }
 #learnings-container .content:hover .learnings-title {
   margin-top: 3rem;
@@ -717,6 +741,8 @@ header.masthead {
 #learnings-container .column .learnings-title {
   color: #BE8479;
   margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 900;
   transition: .5s;
 
 }
@@ -724,7 +750,13 @@ header.masthead {
 #learnings-container .column .learnings-subtitle {
   color: rgb(208, 206, 206);
   font-style: italic;
-
+  display: none;
+  transition: .5s;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+#learnings-container .content:hover .learnings-subtitle {
+  display: inline-block;
 }
 
 /* Style the buttons */

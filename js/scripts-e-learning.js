@@ -52,13 +52,7 @@
     })(jQuery); 
     
 
-    const learnings = {
-        "Introduction": { category: "intro", length: "bablabal", image: "promotionImage/meuh.jpeg" },
-        "Pourquoi": { category: "intro", length: "1min30",  image: "promotionImage/mines_2.jpeg" },
-        "Les femmes dans la société": { category: "intro", length: "1min30",  image: "promotionImage/maman.jpg" },
-        "Les droits des femmes": { category: "intro", length: "1min30",  image: "promotionImage/egalite.jpg" },
-        "Les figures féministes": { category: "Partie 1", length: "1min30",  image: "promotionImage/simone_veil.jpg" }
-      }
+
     const generatedHtml = Object.keys(learnings).reduce((accum, currKey) => accum +
       ` <div class="column" id =${currKey}>
             
@@ -67,8 +61,8 @@
                     <img src=${learnings[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
                 </div>
                 <div class="overlay">
-                    <h3 class="learnings-title">${currKey}</h3>
-                    <p class="learnings-subtitle">${learnings[currKey].length}</p>
+                    <div class="learnings-title">${currKey}</div>
+                    <p class="learnings-subtitle">${learnings[currKey].description}</p>
                 </div>
             </div>
         </div>
@@ -86,7 +80,7 @@ function search_function() {
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < col.length; i++) {
-    a = col[i].getElementsByTagName("h3")[0];
+    a = col[i].getElementsByClassName("learnings-title")[0];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       col[i].style.display = "inline-block";

@@ -52,29 +52,63 @@
     })(jQuery); 
     
 
-    const learnings = {
-        "Introduction": { category: "intro", length: "1min30", image: "promotionImage/meuh.jpeg" },
-        "Pourquoi": { category: "intro", length: "1min30",  image: "promotionImage/mines_2.jpeg" },
-        "Les femmes dans la société": { category: "intro", length: "1min30",  image: "promotionImage/maman.jpg" },
-        "Les droits des femmes": { category: "intro", length: "1min30",  image: "promotionImage/egalite.jpg" },
-        "Les figures féministes": { category: "Partie 1", length: "1min30",  image: "promotionImage/simone_veil.jpg" }
-      }
-    const generatedHtml = Object.keys(learnings).reduce((accum, currKey) => accum +
+    var intro ={};
+    for (item in learnings) {
+        if (learnings[item]["category"] === "intro"){
+            intro[item] = learnings[item]
+        }
+    }
+
+    
+
+    const Partie1 = {}
+    for (item in learnings) {
+        if (learnings[item]["category"] === "Partie 1"){
+            Partie1[item] = learnings[item]
+        }
+    }
+
+    const generatedHtmlintro = Object.keys(intro).reduce((accum, currKey) => accum +
       ` <div class="column" id =${currKey}>
            
             <div class="content">
                 <div class="img-learning" >
-                    <img src=${learnings[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
+                    <img src=${intro[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
                 </div>
                 <div class="overlay">
-                    <h3 class="learnings-title">${currKey}</h3>
-                    <p class="learnings-subtitle">${learnings[currKey].length}</p>
+                    <div class="learnings-title">${currKey}</div>
+                    <p class="learnings-subtitle">${intro[currKey].description}</p>
                 </div>
             </div>
+            
         </div>
         `, '');
     
-    document.getElementById('learnings-container').innerHTML = generatedHtml;
+    document.getElementById('intro-container').insertAdjacentHTML('afterbegin', generatedHtmlintro);
+
+
+    const generatedHtmlPartie1 = Object.keys(Partie1).reduce((accum, currKey) => accum +
+      ` <div class="column" id =${currKey}>
+           
+            <div class="content">
+                <div class="img-learning" >
+                    <img src=${Partie1[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
+                </div>
+                <div class="overlay">
+                    <div class="learnings-title">${currKey}</div>
+                    <p class="learnings-subtitle">${Partie1[currKey].description}</p>
+                </div>
+            </div>
+            
+        </div>
+        `, '');
+    
+    document.getElementById('Partie1-container').insertAdjacentHTML('afterbegin', generatedHtmlPartie1);
+
+
+
+
+
 
 function search_function() {
   // Declare variables
@@ -95,5 +129,13 @@ function search_function() {
     }
   }
 }
+var distance = document.getElementsByClassName('column')[0].clientWidth;
+function ScrollLft(text) {
+    element = document.getElementById(text);
+    element.scrollBy({left:-distance, behavior:"smooth"});
+};
 
-
+function ScrollRht(text) {
+    element = document.getElementById(text);
+    element.scrollBy({left:distance, behavior:"smooth"});
+};
