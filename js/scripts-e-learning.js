@@ -55,13 +55,13 @@
 
     const generatedHtml = Object.keys(learnings).reduce((accum, currKey) => accum +
       ` <div class="column" id =${currKey}>
-            
-            <div class="content">
+
+            <div class="content" onmouseover="update_item(${currKey})">
                 <div class="img-learning" >
                     <img src=${learnings[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
                 </div>
                 <div class="overlay">
-                    <div class="learnings-title">${currKey}</div>
+                    <div class="learnings-title">${learnings[currKey].title}</div>
                     <p class="learnings-subtitle">${learnings[currKey].description}</p>
                 </div>
             </div>
@@ -91,3 +91,8 @@ function search_function() {
 }
 
 
+var item_id;
+function update_item(id) {
+    item_id = id;
+    console.log(item_id);
+};

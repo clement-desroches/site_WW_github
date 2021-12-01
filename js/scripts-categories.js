@@ -71,44 +71,63 @@
     const generatedHtmlintro = Object.keys(intro).reduce((accum, currKey) => accum +
       ` <div class="column" id =${currKey}>
            
-            <div class="content">
+            <a class="content" onmouseover="update_item(${currKey})" href="/item.html">
                 <div class="img-learning" >
                     <img src=${intro[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
                 </div>
                 <div class="overlay">
-                    <div class="learnings-title">${currKey}</div>
+                    <div class="learnings-title">${intro[currKey].title}</div>
                     <p class="learnings-subtitle">${intro[currKey].description}</p>
                 </div>
-            </div>
+            </a>
             
         </div>
         `, '');
-    
+if (document.getElementById('intro-container')!==null){
     document.getElementById('intro-container').insertAdjacentHTML('afterbegin', generatedHtmlintro);
-
+}
 
     const generatedHtmlPartie1 = Object.keys(Partie1).reduce((accum, currKey) => accum +
       ` <div class="column" id =${currKey}>
            
-            <div class="content">
-                <div class="img-learning" >
+            <a class="content" onmouseover="update_item(${currKey})" href="/item.html">
+                <div class="img-learning">
                     <img src=${Partie1[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
                 </div>
                 <div class="overlay">
-                    <div class="learnings-title">${currKey}</div>
+                    <div class="learnings-title">${Partie1[currKey].title}</div>
                     <p class="learnings-subtitle">${Partie1[currKey].description}</p>
                 </div>
-            </div>
+            </a>
             
         </div>
         `, '');
-    
+if (document.getElementById('Partie1-container')!==null){
     document.getElementById('Partie1-container').insertAdjacentHTML('afterbegin', generatedHtmlPartie1);
+}
 
 
 
 
-
+    const generatedHtml = Object.keys(learnings).reduce((accum, currKey) => accum +
+      ` <div class="column" id =${currKey}>
+            <a href="/item.html">
+            <div class="content" onmouseover="update_item(${currKey})" href="/item.html">
+                <div class="img-learning" >
+                    <img src=${learnings[currKey].image} alt="Mountains" style="width: 100%; height: auto; overflow: hidden;">
+                </div>
+                <div class="overlay">
+                    <div class="learnings-title">${learnings[currKey].title}</div>
+                    <p class="learnings-subtitle">${learnings[currKey].description}</p>
+                </div>
+            </div>
+            </a>
+        </div>
+        `, '');
+    
+if (document.getElementById('learnings-container')!==null){
+    document.getElementById('learnings-container').innerHTML = generatedHtml;
+}
 
 function search_function() {
   // Declare variables
@@ -120,7 +139,7 @@ function search_function() {
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < col.length; i++) {
-    a = col[i].getElementsByTagName("h3")[0];
+    a = col[i].getElementsByClassName("learnings-title")[0];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       col[i].style.display = "inline-block";
@@ -129,7 +148,14 @@ function search_function() {
     }
   }
 }
-var distance = document.getElementsByClassName('column')[0].clientWidth;
+
+function update_item(id) {
+    localStorage.setItem("last_id", id);
+};
+
+if (document.getElementsByClassName('column')[0] !==undefined){
+    var distance = document.getElementsByClassName('column')[0].clientWidth;
+}
 function ScrollLft(text) {
     element = document.getElementById(text);
     element.scrollBy({left:-distance, behavior:"smooth"});
